@@ -92,7 +92,7 @@ case "$tag_context" in
         git_refs=$(git for-each-ref --sort=-v:refname --format '%(refname:lstrip=2)')
         ;;
     *branch*)
-        git_refs=$(git tag --list --merged HEAD --sort=-committerdate)
+        git_refs=$(git -c 'versionsort.suffix=-' tag --list --sort=-v:refname)
         ;;
     * ) echo "Unrecognised context"
         exit 1;;
